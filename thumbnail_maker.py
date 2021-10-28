@@ -68,8 +68,8 @@ class ThumbnailMakerService(object):
         logging.info("START make_thumbnails")
         start = time.perf_counter()
 
-        self.download_images(img_url_list)
-        self.perform_resizing()
+        self.download_images(img_url_list) # IO bound
+        self.perform_resizing() # CPU bound
 
         end = time.perf_counter()
         logging.info("END make_thumbnails in {} seconds".format(end - start))
