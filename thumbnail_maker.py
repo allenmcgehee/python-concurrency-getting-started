@@ -55,8 +55,10 @@ class ThumbnailMakerService(object):
                 img = img.resize((basewidth, hsize), PIL.Image.LANCZOS)
                 
                 # save the resized image to the output dir with a modified file name 
-                new_filename = os.path.splitext(filename)[0] + \
-                    '_' + str(basewidth) + os.path.splitext(filename)[1]
+                new_filename =  (
+                                    os.path.splitext(filename)[0] +
+                                    '_' + str(basewidth) + os.path.splitext(filename)[1]
+                                )
                 img.save(self.output_dir + os.path.sep + new_filename)
 
             os.remove(self.input_dir + os.path.sep + filename)
